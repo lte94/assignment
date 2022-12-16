@@ -1,5 +1,14 @@
 import React from 'react';
 import Todo from './Todo';
+import styled from 'styled-components';
+
+const Box = styled.div`
+  border: 3px solid green;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+`;
 
 function TodoList({ isActive, todos, setTodos }) {
   return (
@@ -10,18 +19,10 @@ function TodoList({ isActive, todos, setTodos }) {
         .filter(item => item.isDone === !isActive)
         .map(item => {
           return (
-            <div
-              style={{
-                border: '1px solid black',
-                padding: '20px',
-              }}
-            >
-              <Todo
-                item={item}
-                isActive={isActive}
-                setTodos={setTodos}
-                key={item.id}
-              />
+            <div key={item.id}>
+              <Box>
+                <Todo item={item} isActive={isActive} setTodos={setTodos} />
+              </Box>
             </div>
           );
         })}

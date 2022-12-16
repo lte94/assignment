@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import styled from 'styled-components';
+
+const InputStyle = styled.div`
+  padding: 20px;
+  background-color: skyblue;
+`;
 
 function Input({ setTodos }) {
   const [title, setTitle] = useState('');
@@ -33,16 +39,12 @@ function Input({ setTodos }) {
 
   return (
     <section>
-      <form
-        onSubmit={handleSubmitClick}
-        style={{
-          padding: '20px',
-          backgroundColor: 'skyblue',
-        }}
-      >
-        제목 : <input value={title} onChange={handleChangeTitle} />
-        내용 : <input value={contents} onChange={handleChangeContents} />
-        <button>추가</button>
+      <form onSubmit={handleSubmitClick}>
+        <InputStyle>
+          제목 : <input value={title} onChange={handleChangeTitle} />
+          내용 : <input value={contents} onChange={handleChangeContents} />
+          <button>추가</button>
+        </InputStyle>
       </form>
     </section>
   );
